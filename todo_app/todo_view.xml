@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+		<record id="view_form_todo_task" model="ir.ui.view">
+			<field name="name">Product Form</field>
+			<field name="model">specific.product</field>
+			<field name="arch" type="xml">
+			<form string="Producto Comercial">
+				<sheet>
+					<notebook>
+						<page name="desplegados" string="Desplegados">
+
+							<group string="Atributos">
+
+								<group>
+									<field name="edicion"/>
+									<field name="estilo"/>
+									<field name="seccion"/>
+									<field name="subseccion"/>
+									<field name="pagina"/>
+									<field name="tarifa"/>
+								</group>
+
+								<group>
+									<field name="color"/>
+									<field name="status"/>
+									<field name="dias"/>
+									<field name="ancho"/>
+									<field name="alto"/>
+									<field name="orden_insercion"/>
+									<field name="arte_final"/>
+								</group>
+
+								<group>
+									<field name="centro_costos"/>
+									<field name="vendedor_agente"/>
+									<field name="tipo"/>
+									<field name="mercado"/>
+									<field name="retener"/>
+									<field name="contrato"/>
+								</group>
+
+							</group>
+						</page>
+					</notebook>
+					
+				</sheet>
+			</form>
+			</field>
+		</record>
+
+		<!-- Action to open To-do Task list -->
+		<act_window id="action_todo_task"
+		name="Producto Personalizado"
+		res_model="specific.product"
+		view_mode="tree,form" />
+		<!-- Menu item to open To-do Task list -->
+		<menuitem id="menu _todo_task"
+		name="Nuevo Producto"
+		parent="base.menu_base_partner"
+		sequence="1"
+		action="action_todo_task" />
+	</data>
+</openerp>
