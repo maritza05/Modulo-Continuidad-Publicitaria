@@ -2,11 +2,11 @@
 <openerp>
 	<data>
 
-		<record id="view_form_todo_task" model="ir.ui.view">
-			<field name="name">Product Form</field>
-			<field name="model">specific.product</field>
+		<record id="view_form_administration" model="ir.ui.view">
+			<field name="name">Administration Form</field>
+			<field name="model">admin.product</field>
 			<field name="arch" type="xml">
-			<form string="Producto Comercial">
+			<form string="Administracion de Productos">
 				<sheet>
 					<notebook>
 						<page name="desplegados" string="Desplegados">
@@ -44,22 +44,21 @@
 							</group>
 						</page>
 					</notebook>
-					
 				</sheet>
 			</form>
 			</field>
 		</record>
 
 		<!-- Action to open To-do Task list -->
-		<act_window id="action_todo_task"
+		<act_window id="action_admin_task"
 		name="Orden de Inserción"
-		res_model="specific.product"
+		res_model="admin.product"
 		view_mode="tree,form" />
 		<!-- Menu item to open To-do Task list -->
-		<menuitem id="menu _todo_task"
-		name="Continuidad Publicitaria"
+		<menuitem id="menu _admin_task"
+		name="Administrador de Continuidad Publicitaria"
 		parent="base.menu_base_partner"
-		sequence="1"
-		action="action_todo_task" />
+		sequence="2"
+		action="action_admin_task" />
 	</data>
 </openerp>

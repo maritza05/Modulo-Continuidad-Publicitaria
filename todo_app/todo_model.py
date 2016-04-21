@@ -13,7 +13,9 @@ class SpecificProduct(models.Model):
 	_name = 'specific.product'
 	_inherit = 'product.product'
 	_columns = {
-		'edicion': fields.selection([('imagen', 'Imagen'), ('opcion2', 'Opcion 2'), ('opcion3', 'Opcion 3')], 'Edición'),
+	
+	
+		'edicion': fields.selection([('default_desp', 'Default Desp'), ('opcion2', 'Opcion 2'), ('opcion3', 'Opcion 3')], 'Estilo'),
 		'estilo': fields.selection([('default_desp', 'Default Desp'), ('opcion2', 'Opcion 2'), ('opcion3', 'Opcion 3')], 'Estilo'),
 		'seccion': fields.selection([('seccion', 'Capital'), ('opcion2', 'Opcion 2'), ('opcion3', 'Opcion 3')], 'Sección'),
 		'subseccion': fields.selection([('indefinida', 'Indefinida'), ('opcion2', 'Opcion 2'), ('opcion3', 'Opcion 3')], 'Subsección'),
@@ -35,4 +37,8 @@ class SpecificProduct(models.Model):
 		'retener': fields.selection([('no_retenido', 'No retenido'), ('opcion2', 'Opcion 2'), ('opcion3', 'Opcion 3')], 'Retener'),
 		'contrato': fields.selection([('contrato', ''), ('opcion2', 'Opcion 2'), ('opcion3', 'Opcion 3')], 'Contrato'),
 	}
+
+	@api.onchange('edicion')
+	def _get_selection_(self):
+		self.edicion = ['Hola', 'adios']
 
