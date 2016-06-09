@@ -2,11 +2,12 @@
 <openerp>
 	<data>
 
-		<record id="view_form_todo_task" model="ir.ui.view">
+
+		<record id="view_form_administration" model="ir.ui.view">
 			<field name="name">Product Form</field>
 			<field name="model">specific.product</field>
 			<field name="arch" type="xml">
-			<form string="Producto Comercial">
+			<form string="Administracion de Productos">
 				<sheet>
 					<notebook>
 						<page name="desplegados" string="Desplegados">
@@ -44,22 +45,271 @@
 							</group>
 						</page>
 					</notebook>
-					
 				</sheet>
 			</form>
 			</field>
 		</record>
 
-		<!-- Action to open To-do Task list -->
-		<act_window id="action_todo_task"
-		name="Orden de Inserción"
-		res_model="specific.product"
-		view_mode="tree,form" />
-		<!-- Menu item to open To-do Task list -->
-		<menuitem id="menu _todo_task"
-		name="Continuidad Publicitaria"
-		parent="base.menu_base_partner"
-		sequence="1"
-		action="action_todo_task" />
+		<!-- Action for the edicion -->
+		<record id="continuidad_publicitaria_edicion_action" model="ir.actions.act_window">
+			<field name="name">Edicion</field>
+			<field name="res_model">edicion.publicidad</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Haz click para añadir una nueva edición.</p>
+			</field>
+		</record>
+
+		<!-- Action for the estilo -->
+		<record id="continuidad_publicitaria_estilo_action" model="ir.actions.act_window">
+			<field name="name">Estilo</field>
+			<field name="res_model">estilo.publicidad</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Haz click para añadir un nuevo estilo.</p>
+			</field>
+		</record>
+
+		<!-- Action for the seccion -->
+		<record id="continuidad_publicitaria_seccion_action" model="ir.actions.act_window">
+			<field name="name">Seccion</field>
+			<field name="res_model">seccion.publicidad</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Haz click para añadir una nueva seccion.</p>
+			</field>
+		</record>
+
+		<!-- Action for the subseccion -->
+		<record id="continuidad_publicitaria_subseccion_action" model="ir.actions.act_window">
+			<field name="name">Subseccion</field>
+			<field name="res_model">subseccion.publicidad</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Haz click para añadir una nueva subseccion.</p>
+			</field>
+		</record>
+
+		<!-- Action for the subseccion -->
+		<record id="continuidad_publicitaria_pagina_action" model="ir.actions.act_window">
+			<field name="name">Pagina</field>
+			<field name="res_model">pagina.publicidad</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Haz click para añadir una nueva tarifa.</p>
+			</field>
+		</record>
+
+		<!-- Action for the subseccion -->
+		<record id="continuidad_publicitaria_tarifa_action" model="ir.actions.act_window">
+			<field name="name">Tarifa</field>
+			<field name="res_model">tarifa.publicidad</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Haz click para añadir una nueva tarifa.</p>
+			</field>
+		</record>
+
+		<!-- Action for the subseccion -->
+		<record id="continuidad_publicitaria_color_action" model="ir.actions.act_window">
+			<field name="name">Color</field>
+			<field name="res_model">color.publicidad</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Haz click para añadir un nuevo color.</p>
+			</field>
+		</record>
+
+
+		<!-- Action for the subseccion -->
+		<record id="continuidad_publicitaria_status_action" model="ir.actions.act_window">
+			<field name="name">Status</field>
+			<field name="res_model">status.publicidad</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Haz click para añadir un nuevo status.</p>
+			</field>
+		</record>
+
+		<!-- Action for the subseccion -->
+		<record id="continuidad_publicitaria_centrocostos_action" model="ir.actions.act_window">
+			<field name="name">CentroCostos</field>
+			<field name="res_model">centro_costos.publicidad</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Haz click para añadir un nuevo centro de costos.</p>
+			</field>
+		</record>
+
+		<!-- Action for the subseccion -->
+		<record id="continuidad_publicitaria_vendedor_agente_action" model="ir.actions.act_window">
+			<field name="name">VendedorAgente</field>
+			<field name="res_model">vendedor_agente.publicidad</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Haz click para añadir un nuevo vendedor.</p>
+			</field>
+		</record>
+
+		<!-- Action for the subseccion -->
+		<record id="continuidad_publicitaria_tipo_action" model="ir.actions.act_window">
+			<field name="name">Tipo</field>
+			<field name="res_model">tipo.publicidad</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Haz click para añadir un nuevo tipo.</p>
+			</field>
+		</record>
+
+		<!-- Action for the subseccion -->
+		<record id="continuidad_publicitaria_mercado_action" model="ir.actions.act_window">
+			<field name="name">Mercado</field>
+			<field name="res_model">mercado.publicidad</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Haz click para añadir un nuevo mercado.</p>
+			</field>
+		</record>
+
+		<!-- Action for the subseccion -->
+		<record id="continuidad_publicitaria_retener_action" model="ir.actions.act_window">
+			<field name="name">Retener</field>
+			<field name="res_model">retener.publicidad</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Haz click para añadir una nueva opción para retener.</p>
+			</field>
+		</record>
+
+		<!-- Action for the subseccion -->
+		<record id="continuidad_publicitaria_contrato_action" model="ir.actions.act_window">
+			<field name="name">Contrato</field>
+			<field name="res_model">contrato.publicidad</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Haz click para añadir una nuevo contrato.</p>
+			</field>
+		</record>
+
+
+		<!-- Upper menu -->
+		<menuitem id="modulo_continuidad_publicitaria" name="Administrador Continuidad publicitaria"/>
+		<menuitem id="modulo_continuidad_publicitaria_menu" name="Administrador Continuidad Publicitaria" parent="modulo_continuidad_publicitaria" />
+
+
+
+		<!-- Submenu para edicion -->
+		<menuitem id="edicion_menu"
+			name="Edicion"
+			parent="modulo_continuidad_publicitaria_menu"
+			action="continuidad_publicitaria_edicion_action"/>
+
+		<!-- Submenu para estilo -->
+		<menuitem id="estilo_menu"
+			name="Estilo"
+			parent="modulo_continuidad_publicitaria_menu"
+			action="continuidad_publicitaria_estilo_action"/>
+
+		<!-- Submenu para seccion -->
+		<menuitem id="seccion_menu"
+			name="Seccion"
+			parent="modulo_continuidad_publicitaria_menu"
+			action="continuidad_publicitaria_seccion_action"/>
+
+		<!-- Submenu para subseccion -->
+		<menuitem id="subseccion_menu"
+			name="SubSección"
+			parent="modulo_continuidad_publicitaria_menu"
+			action="continuidad_publicitaria_subseccion_action"/>
+
+		<!-- Submenu para pagina -->
+		<menuitem id="pagina_menu"
+			name="Pagina"
+			parent="modulo_continuidad_publicitaria_menu"
+			action="continuidad_publicitaria_pagina_action"/>
+
+		<!-- Submenu para tarifa -->
+		<menuitem id="tarifa_menu"
+			name="Tarifa"
+			parent="modulo_continuidad_publicitaria_menu"
+			action="continuidad_publicitaria_tarifa_action"/>
+
+		<!-- Submenu para color -->
+		<menuitem id="color_menu"
+			name="Color"
+			parent="modulo_continuidad_publicitaria_menu"
+			action="continuidad_publicitaria_color_action"/>
+
+		<!-- Submenu para status -->
+		<menuitem id="status_menu"
+			name="Status"
+			parent="modulo_continuidad_publicitaria_menu"
+			action="continuidad_publicitaria_status_action"/>
+
+		<!-- Submenu para centro de costos -->
+		<menuitem id="centro_costos_menu"
+			name="Centro de Costos"
+			parent="modulo_continuidad_publicitaria_menu"
+			action="continuidad_publicitaria_centrocostos_action"/>
+
+		<!-- Submenu para vendedor -->
+		<menuitem id="vendedor_agente_menu"
+			name="Vendedor Agente"
+			parent="modulo_continuidad_publicitaria_menu"
+			action="continuidad_publicitaria_vendedor_agente_action"/>
+
+		<!-- Submenu para tipo -->
+		<menuitem id="tipo_menu"
+			name="Tipo"
+			parent="modulo_continuidad_publicitaria_menu"
+			action="continuidad_publicitaria_tipo_action"/>
+
+		<!-- Submenu para mercado -->
+		<menuitem id="mercado_menu"
+			name="Mercado"
+			parent="modulo_continuidad_publicitaria_menu"
+			action="continuidad_publicitaria_mercado_action"/>
+
+		<!-- Submenu para retener -->
+		<menuitem id="retener_menu"
+			name="Retener"
+			parent="modulo_continuidad_publicitaria_menu"
+			action="continuidad_publicitaria_retener_action"/>
+
+		<!-- Submenu para contrato -->
+		<menuitem id="contrato_menu"
+			name="Contrato"
+			parent="modulo_continuidad_publicitaria_menu"
+			action="continuidad_publicitaria_contrato_action"/>
+
+
+			<menuitem id="modulo_productos_continuidad_publicitaria" name="Formulario de Productos Publicitarios"/>
+
+			<!-- Accion para abrir el formulario para registros de productos publicitarios -->
+			<act_window id="action_admin_task"
+			name="Orden de Inserción"
+			res_model="specific.product"
+			view_mode="tree,form" />
+
+			<menuitem id="modulo_productos_continuidad_publicitaria_menu" name="Formulario de Productos Publicitarios"
+				parent="modulo_productos_continuidad_publicitaria" action="action_admin_task" />
+
+
+
 	</data>
+
 </openerp>
