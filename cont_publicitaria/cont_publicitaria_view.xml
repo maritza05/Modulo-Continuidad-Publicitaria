@@ -1,0 +1,893 @@
+<?xml version="1.0"?>
+<openerp>
+  <data>
+
+    <!-- Formulario para el registro de anuncios publicitarios -->
+    <record id="view_form_espacio_publicitario" model="ir.ui.view">
+      <field name="name">Espacio Publicitario Form</field>
+      <field name="model">espacio.publicitario</field>
+      <field name="arch" type="xml">
+        <form string="Espacio Publicitario">
+          <sheet>
+
+              <group cols="2" string="Administrador de Edición">
+
+              </group>
+
+              <notebook>
+                <page string="Información General">
+
+                      <group name="group_tags">
+                        <group>
+                          <field name="edicion"/>
+                          <field name="estilo"/>
+                        </group>
+                        <group>
+                          <field name="seccion"/>
+                          <field name="subseccion"/>
+                        </group>
+                        <group>
+                          <field name="pagina"/>
+                          <field name="tarifa"/>
+                        </group>
+                      </group>
+
+                        <group name="group_descripcion">
+                          <separator string="Especificaciones" colspan="4"/>
+                              <group>
+                                <field name="color"/>
+                                <field name="status"/>
+                                <field name="ancho"/>
+                                <field name="alto"/>
+                                <field name="dias" on_change="_compute_days(dias)"/>
+                              </group>
+                              <group>
+                                <field name="date_field" nolabel="1" class="oe_subtotal_footer_separator"/>
+                              </group>
+                              <group>
+                                <field name="orden_insercion"/>
+                              </group>
+                        </group>
+                        <group>
+                        <group name="group_mercado">
+                          <separator string="Costos" colspan="4"/>
+                              <group>
+                                <field name="centro_costos"/>
+                                <field name="vendedor_agente"/>
+                                <field name="tipo"/>
+                                <field name="mercado"/>
+                                <field name="retener"/>
+                                <field name="contrato"/>
+                              </group>
+                              <group class="oe_subtotal_footer">
+                                  <field name="costo_base" />
+                                  <field name="costo_extras"/>
+                                  <field name="descuentos"/>
+                                  <field name="costo_comision"/>
+                                  <field name="costo_contrato"/>
+                                  <field name="costo_impuestos"/>
+
+                                  <field name="costo_total" class="oe_subtotal_footer_separator"/>
+
+                              </group>
+
+                        </group>
+
+
+                      </group>
+                      </page>
+
+
+              </notebook>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- Formulario de edicion -->
+    <record id="view_form_edicion" model="ir.ui.view">
+      <field name="name">Atributos Edicion Form</field>
+      <field name="model">edicion_espacio.publicidad</field>
+      <field name="arch" type="xml">
+        <form string="Edicion">
+          <sheet>
+
+              <group cols="2" string="Administrador de Edición">
+                <div class="oe_title">
+                  <label class="oe_edit_only" for="name" string="Nombre de Edición"/>
+                  <h2><field name="name" placeholder="Nombre de Edición"/></h2>
+                </div>
+              </group>
+
+              <notebook>
+                <page string="Información General">
+                    <group>
+                      <group name="group_tags">
+                        <field name="Xtag_inicio"/>
+                        <field name="Xtaf_fin"/>
+                      </group>
+
+                      <group name="group_costo">
+                        <field name="costo"/>
+                      </group>
+                    </group>
+                </page>
+
+                <page string="Notas" name="notes">
+                  <group name="group_descripcion">
+                    <separator string="Descripción de la Edición" colspan="4"/>
+                      <field name="descripcion" colspan="4" nolabel="1"
+                             placeholder="This note will be displayed on the quotations."/>
+                  </group>
+                </page>
+              </notebook>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- Formulario de estilo -->
+    <record id="view_form_estilo" model="ir.ui.view">
+      <field name="name">Atributos Estilo Form</field>
+      <field name="model">estilo_espacio.publicidad</field>
+      <field name="arch" type="xml">
+        <form string="Estilo">
+          <sheet>
+
+              <group cols="2" string="Administrador de Estilos">
+                <div class="oe_title">
+                  <label class="oe_edit_only" for="name" string="Nombre de Estilo"/>
+                  <h2><field name="name" placeholder="Nombre de Estilo"/></h2>
+                </div>
+              </group>
+
+              <notebook>
+                <page string="Información General">
+                    <group>
+                      <group name="group_tags">
+                        <field name="Xtag_inicio"/>
+                        <field name="Xtaf_fin"/>
+                      </group>
+
+                      <group name="group_costo">
+                        <field name="costo"/>
+                      </group>
+                    </group>
+                </page>
+
+                <page string="Notas" name="notes">
+                  <group name="group_descripcion">
+                    <separator string="Descripción del Estilo" colspan="4"/>
+                      <field name="descripcion" colspan="4" nolabel="1"
+                             placeholder="This note will be displayed on the quotations."/>
+                  </group>
+                </page>
+              </notebook>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- Formulario de seccion -->
+    <record id="view_form_seccion" model="ir.ui.view">
+      <field name="name">Atributos Seccion Form</field>
+      <field name="model">seccion_espacio.publicidad</field>
+      <field name="arch" type="xml">
+        <form string="Seccion">
+          <sheet>
+
+              <group cols="2" string="Administrador de Secciones">
+                <div class="oe_title">
+                  <label class="oe_edit_only" for="name" string="Nombre de Sección"/>
+                  <h2><field name="name" placeholder="Nombre de Sección"/></h2>
+                </div>
+              </group>
+
+              <notebook>
+                <page string="Información General">
+                    <group>
+                      <group name="group_tags">
+                        <field name="Xtag_inicio"/>
+                        <field name="Xtaf_fin"/>
+                      </group>
+
+                      <group name="group_costo">
+                        <field name="costo"/>
+                      </group>
+                    </group>
+                </page>
+
+                <page string="Notas" name="notes">
+                  <group name="group_descripcion">
+                    <separator string="Descripción de la Sección" colspan="4"/>
+                      <field name="descripcion" colspan="4" nolabel="1"
+                             placeholder="This note will be displayed on the quotations."/>
+                  </group>
+                </page>
+              </notebook>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- Formulario de subseccion -->
+    <record id="view_form_subseccion" model="ir.ui.view">
+      <field name="name">Atributos Subseccion Form</field>
+      <field name="model">subseccion_espacio.publicidad</field>
+      <field name="arch" type="xml">
+        <form string="Seccion">
+          <sheet>
+
+              <group cols="2" string="Administrador de Subsecciones">
+                <div class="oe_title">
+                  <label class="oe_edit_only" for="name" string="Nombre de Subsección"/>
+                  <h2><field name="name" placeholder="Nombre de Subsección"/></h2>
+                </div>
+              </group>
+
+              <notebook>
+                <page string="Información General">
+                    <group>
+                      <group name="group_tags">
+                        <field name="Xtag_inicio"/>
+                        <field name="Xtaf_fin"/>
+                      </group>
+
+                      <group name="group_costo">
+                        <field name="costo"/>
+                      </group>
+                    </group>
+                </page>
+
+                <page string="Notas" name="notes">
+                  <group name="group_descripcion">
+                    <separator string="Descripción de la Subsección" colspan="4"/>
+                      <field name="descripcion" colspan="4" nolabel="1"
+                             placeholder="This note will be displayed on the quotations."/>
+                  </group>
+                </page>
+              </notebook>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- Formulario de pagina -->
+    <record id="view_form_pagina" model="ir.ui.view">
+      <field name="name">Atributos Pagina Form</field>
+      <field name="model">pagina_espacio.publicidad</field>
+      <field name="arch" type="xml">
+        <form string="Seccion">
+          <sheet>
+
+              <group cols="2" string="Administrador de Páginas">
+                <div class="oe_title">
+                  <label class="oe_edit_only" for="name" string="Nombre de Página"/>
+                  <h2><field name="name" placeholder="Nombre de Página"/></h2>
+                </div>
+              </group>
+
+              <notebook>
+                <page string="Información General">
+                    <group>
+                      <group name="group_tags">
+                        <field name="Xtag_inicio"/>
+                        <field name="Xtaf_fin"/>
+                      </group>
+
+                      <group name="group_costo">
+                        <field name="costo"/>
+                      </group>
+                    </group>
+                </page>
+
+                <page string="Notas" name="notes">
+                  <group name="group_descripcion">
+                    <separator string="Descripción de la Página" colspan="4"/>
+                      <field name="descripcion" colspan="4" nolabel="1"
+                             placeholder="This note will be displayed on the quotations."/>
+                  </group>
+                </page>
+              </notebook>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- Formulario de tarifa -->
+    <record id="view_form_tarifa" model="ir.ui.view">
+      <field name="name">Atributos Tarifa Form</field>
+      <field name="model">tarifa_espacio.publicidad</field>
+      <field name="arch" type="xml">
+        <form string="Tarifa">
+          <sheet>
+
+              <group cols="2" string="Administrador de Tarifas">
+                <div class="oe_title">
+                  <label class="oe_edit_only" for="name" string="Nombre de Tarifa"/>
+                  <h2><field name="name" placeholder="Nombre de Tarifa"/></h2>
+                </div>
+              </group>
+
+              <notebook>
+                <page string="Información General">
+                    <group>
+                      <group name="group_tags">
+                        <field name="Xtag_inicio"/>
+                        <field name="Xtaf_fin"/>
+                      </group>
+
+                      <group name="group_costo">
+                        <field name="costo"/>
+                      </group>
+                    </group>
+                </page>
+
+                <page string="Notas" name="notes">
+                  <group name="group_descripcion">
+                    <separator string="Descripción de la Tarifa" colspan="4"/>
+                      <field name="descripcion" colspan="4" nolabel="1"
+                             placeholder="This note will be displayed on the quotations."/>
+                  </group>
+                </page>
+              </notebook>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- Formulario de color -->
+    <record id="view_form_color" model="ir.ui.view">
+      <field name="name">Atributos Color Form</field>
+      <field name="model">color_espacio.publicidad</field>
+      <field name="arch" type="xml">
+        <form string="Color">
+          <sheet>
+
+              <group cols="2" string="Administrador de Color">
+                <div class="oe_title">
+                  <label class="oe_edit_only" for="name" string="Nombre de Color"/>
+                  <h2><field name="name" placeholder="Nombre de Color"/></h2>
+                </div>
+              </group>
+
+              <notebook>
+                <page string="Información General">
+                    <group>
+                      <group name="group_tags">
+                        <field name="Xtag_inicio"/>
+                        <field name="Xtaf_fin"/>
+                      </group>
+
+                      <group name="group_costo">
+                        <field name="costo"/>
+                      </group>
+                    </group>
+                </page>
+
+                <page string="Notas" name="notes">
+                  <group name="group_descripcion">
+                    <separator string="Descripción del Color" colspan="4"/>
+                      <field name="descripcion" colspan="4" nolabel="1"
+                             placeholder="This note will be displayed on the quotations."/>
+                  </group>
+                </page>
+              </notebook>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Formulario de Status -->
+    <record id="view_form_status" model="ir.ui.view">
+      <field name="name">Atributos Status Form</field>
+      <field name="model">status_espacio.publicidad</field>
+      <field name="arch" type="xml">
+        <form string="Color">
+          <sheet>
+
+              <group cols="2" string="Administrador de Status">
+                <div class="oe_title">
+                  <label class="oe_edit_only" for="name" string="Nombre de Status"/>
+                  <h2><field name="name" placeholder="Nombre de Status"/></h2>
+                </div>
+              </group>
+
+              <notebook>
+                <page string="Información General">
+                    <group>
+                      <group name="group_tags">
+                        <field name="Xtag_inicio"/>
+                        <field name="Xtaf_fin"/>
+                      </group>
+
+                      <group name="group_costo">
+                        <field name="costo"/>
+                      </group>
+                    </group>
+                </page>
+
+                <page string="Notas" name="notes">
+                  <group name="group_descripcion">
+                    <separator string="Descripción del Status" colspan="4"/>
+                      <field name="descripcion" colspan="4" nolabel="1"
+                             placeholder="This note will be displayed on the quotations."/>
+                  </group>
+                </page>
+              </notebook>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Formulario de Centro de Costos -->
+    <record id="view_form_centro_costos" model="ir.ui.view">
+      <field name="name">Atributos Centro de Costos Form</field>
+      <field name="model">centro_costos_espacio.publicidad</field>
+      <field name="arch" type="xml">
+        <form string="Color">
+          <sheet>
+
+              <group cols="2" string="Administrador del Centro de Costos">
+                <div class="oe_title">
+                  <label class="oe_edit_only" for="name" string="Nombre del Centro de Costos"/>
+                  <h2><field name="name" placeholder="Nombre del Centro de Costos"/></h2>
+                </div>
+              </group>
+
+              <notebook>
+                <page string="Información General">
+                    <group>
+                      <group name="group_tags">
+                        <field name="Xtag_inicio"/>
+                        <field name="Xtaf_fin"/>
+                      </group>
+
+                      <group name="group_costo">
+                        <field name="costo"/>
+                      </group>
+                    </group>
+                </page>
+
+                <page string="Notas" name="notes">
+                  <group name="group_descripcion">
+                    <separator string="Descripción del Centro de Costos" colspan="4"/>
+                      <field name="descripcion" colspan="4" nolabel="1"
+                             placeholder="This note will be displayed on the quotations."/>
+                  </group>
+                </page>
+              </notebook>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- Formulario del Agente Vendedor -->
+    <record id="view_form_agente_vendedor" model="ir.ui.view">
+      <field name="name">Atributos Centro de Agente Vendedor Form</field>
+      <field name="model">vendedor_agente_espacio.publicidad</field>
+      <field name="arch" type="xml">
+        <form string="Vendedores">
+          <sheet>
+
+              <group cols="2" string="Administrador de Vendedores">
+                <div class="oe_title">
+                  <label class="oe_edit_only" for="name" string="Nombre del Vendedor"/>
+                  <h2><field name="name" placeholder="Nombre del Vendedor"/></h2>
+                </div>
+              </group>
+
+              <notebook>
+                <page string="Información General">
+                    <group>
+                      <group name="group_tags">
+                        <field name="Xtag_inicio"/>
+                        <field name="Xtaf_fin"/>
+                      </group>
+
+                      <group name="group_costo">
+                        <field name="costo"/>
+                      </group>
+                    </group>
+                </page>
+
+                <page string="Notas" name="notes">
+                  <group name="group_descripcion">
+                    <separator string="Descripción del Vendedor" colspan="4"/>
+                      <field name="descripcion" colspan="4" nolabel="1"
+                             placeholder="This note will be displayed on the quotations."/>
+                  </group>
+                </page>
+              </notebook>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- Formulario de Tipo -->
+    <record id="view_form_tipo" model="ir.ui.view">
+      <field name="name">Atributos Tipo Form</field>
+      <field name="model">tipo_espacio.publicidad</field>
+      <field name="arch" type="xml">
+        <form string="Categorías">
+          <sheet>
+
+              <group cols="2" string="Administrador de Categorías">
+                <div class="oe_title">
+                  <label class="oe_edit_only" for="name" string="Nombre de la Categoría"/>
+                  <h2><field name="name" placeholder="Nombre de la Categoría"/></h2>
+                </div>
+              </group>
+
+              <notebook>
+                <page string="Información General">
+                    <group>
+                      <group name="group_tags">
+                        <field name="Xtag_inicio"/>
+                        <field name="Xtaf_fin"/>
+                      </group>
+
+                      <group name="group_costo">
+                        <field name="costo"/>
+                      </group>
+                    </group>
+                </page>
+
+                <page string="Notas" name="notes">
+                  <group name="group_descripcion">
+                    <separator string="Descripción de la Categoría" colspan="4"/>
+                      <field name="descripcion" colspan="4" nolabel="1"
+                             placeholder="This note will be displayed on the quotations."/>
+                  </group>
+                </page>
+              </notebook>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Formulario de mercado  -->
+    <record id="view_form_mercado" model="ir.ui.view">
+      <field name="name">Atributos Mercado Form</field>
+      <field name="model">mercado_espacio.publicidad</field>
+      <field name="arch" type="xml">
+        <form string="Mercado">
+          <sheet>
+
+              <group cols="2" string="Administrador de Mercados">
+                <div class="oe_title">
+                  <label class="oe_edit_only" for="name" string="Nombre del Mercado"/>
+                  <h2><field name="name" placeholder="Nombre del Mercado"/></h2>
+                </div>
+              </group>
+
+              <notebook>
+                <page string="Información General">
+                    <group>
+                      <group name="group_tags">
+                        <field name="Xtag_inicio"/>
+                        <field name="Xtaf_fin"/>
+                      </group>
+
+                      <group name="group_costo">
+                        <field name="costo"/>
+                      </group>
+                    </group>
+                </page>
+
+                <page string="Notas" name="notes">
+                  <group name="group_descripcion">
+                    <separator string="Descripción del Mercado" colspan="4"/>
+                      <field name="descripcion" colspan="4" nolabel="1"
+                             placeholder="This note will be displayed on the quotations."/>
+                  </group>
+                </page>
+              </notebook>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- Formulario retener  -->
+    <record id="view_form_retener" model="ir.ui.view">
+      <field name="name">Atributos Retener Form</field>
+      <field name="model">retener_espacio.publicidad</field>
+      <field name="arch" type="xml">
+        <form string="Retener">
+          <sheet>
+
+              <group cols="2" string="Retener">
+                <div class="oe_title">
+                  <label class="oe_edit_only" for="name" string="Nombre"/>
+                  <h2><field name="name" placeholder="Nombre"/></h2>
+                </div>
+              </group>
+
+              <notebook>
+                <page string="Información General">
+                    <group>
+                      <group name="group_tags">
+                        <field name="Xtag_inicio"/>
+                        <field name="Xtaf_fin"/>
+                      </group>
+
+                      <group name="group_costo">
+                        <field name="costo"/>
+                      </group>
+                    </group>
+                </page>
+
+                <page string="Notas" name="notes">
+                  <group name="group_descripcion">
+                    <separator string="Descripción" colspan="4"/>
+                      <field name="descripcion" colspan="4" nolabel="1"
+                             placeholder="This note will be displayed on the quotations."/>
+                  </group>
+                </page>
+              </notebook>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- Formulario contrato  -->
+    <record id="view_form_contrato" model="ir.ui.view">
+      <field name="name">Atributos Contratp Form</field>
+      <field name="model">contrato_espacio.publicidad</field>
+      <field name="arch" type="xml">
+        <form string="Contrato">
+          <sheet>
+
+              <group cols="2" string="Administrador de Contratos">
+                <div class="oe_title">
+                  <label class="oe_edit_only" for="name" string="Nombre de Contrato"/>
+                  <h2><field name="name" placeholder="Nombre"/></h2>
+                </div>
+              </group>
+
+              <notebook>
+                <page string="Información General">
+                    <group>
+                      <group name="group_tags">
+                        <field name="Xtag_inicio"/>
+                        <field name="Xtaf_fin"/>
+                      </group>
+
+                      <group name="group_costo">
+                        <field name="costo"/>
+                      </group>
+                    </group>
+                </page>
+
+                <page string="Notas" name="notes">
+                  <group name="group_descripcion">
+                    <separator string="Descripción de Contrato" colspan="4"/>
+                      <field name="descripcion" colspan="4" nolabel="1"
+                             placeholder="This note will be displayed on the quotations."/>
+                  </group>
+                </page>
+              </notebook>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+  <!-- Menú superior para la administración de los atributos -->
+	<menuitem id="modulo_continuidad_publicitaria"
+            name="Administrador Continuidad publicitaria"/>
+
+	<menuitem id="modulo_continuidad_publicitaria_menu"
+            name="Administrador Continuidad Publicitaria"
+            parent="modulo_continuidad_publicitaria" />
+
+
+  <!-- Acción para abrir el formulario de edicion -->
+  <act_window id="action_edicion_task"
+              name="EdicionAction"
+          	  res_model="edicion_espacio.publicidad"
+          	  view_mode="tree,form" />
+
+  <!-- Menú vertical de edición -->
+  <menuitem id="edicion_menu"
+			      name="Edicion"
+			      parent="modulo_continuidad_publicitaria_menu"
+			      action="action_edicion_task"/>
+
+  <!-- Acción para abrir el formulario de estilo -->
+  <act_window id="action_estilo_task"
+              name="EstiloAction"
+          	  res_model="estilo_espacio.publicidad"
+          	  view_mode="tree,form" />
+
+  <!-- Menú vertical de estilo -->
+  <menuitem id="estilo_menu"
+			      name="Estilo"
+			      parent="modulo_continuidad_publicitaria_menu"
+			      action="action_estilo_task"/>
+
+  <!-- Acción para abrir el formulario de seccion -->
+  <act_window id="action_seccion_task"
+              name="SeccionAction"
+          	  res_model="seccion_espacio.publicidad"
+          	  view_mode="tree,form" />
+
+  <!-- Menú vertical de seccion -->
+  <menuitem id="seccion_menu"
+			      name="Sección"
+			      parent="modulo_continuidad_publicitaria_menu"
+			      action="action_seccion_task"/>
+
+  <!-- Acción para abrir el formulario de subseccion -->
+  <act_window id="action_subseccion_task"
+              name="SubseccionAction"
+          	  res_model="subseccion_espacio.publicidad"
+          	  view_mode="tree,form" />
+
+  <!-- Menú vertical de subseccion -->
+  <menuitem id="subseccion_menu"
+			      name="Subsección"
+			      parent="modulo_continuidad_publicitaria_menu"
+			      action="action_subseccion_task"/>
+
+  <!-- Acción para abrir el formulario de pagina -->
+  <act_window id="action_pagina_task"
+              name="PaginaAction"
+          	  res_model="pagina_espacio.publicidad"
+          	  view_mode="tree,form" />
+
+  <!-- Menú vertical de pagina -->
+  <menuitem id="pagina_menu"
+			      name="Pagina"
+			      parent="modulo_continuidad_publicitaria_menu"
+			      action="action_pagina_task"/>
+
+  <!-- Acción para abrir el formulario de tarifa -->
+  <act_window id="action_tarifa_task"
+              name="TarifaAction"
+          	  res_model="tarifa_espacio.publicidad"
+          	  view_mode="tree,form" />
+
+  <!-- Menú vertical de tarifa -->
+  <menuitem id="tarifa_menu"
+			      name="Tarifa"
+			      parent="modulo_continuidad_publicitaria_menu"
+			      action="action_tarifa_task"/>
+
+  <!-- Acción para abrir el formulario de color -->
+  <act_window id="action_color_task"
+              name="ColorAction"
+          	  res_model="color_espacio.publicidad"
+          	  view_mode="tree,form" />
+
+  <!-- Menú vertical de color -->
+  <menuitem id="color_menu"
+			      name="Color"
+			      parent="modulo_continuidad_publicitaria_menu"
+			      action="action_color_task"/>
+
+  <!-- Acción para abrir el formulario de status -->
+  <act_window id="action_status_task"
+              name="StatusAction"
+          	  res_model="status_espacio.publicidad"
+          	  view_mode="tree,form" />
+
+  <!-- Menú vertical de status -->
+  <menuitem id="status_menu"
+			      name="Status"
+			      parent="modulo_continuidad_publicitaria_menu"
+			      action="action_status_task"/>
+
+  <!-- Acción para abrir el formulario de centro de costos -->
+  <act_window id="action_centro_costos_task"
+              name="CentroCostosAction"
+          	  res_model="centro_costos_espacio.publicidad"
+          	  view_mode="tree,form" />
+
+  <!-- Menú vertical de centro de costos -->
+  <menuitem id="centro_costos_menu"
+			      name="CentroCostos"
+			      parent="modulo_continuidad_publicitaria_menu"
+			      action="action_centro_costos_task"/>
+
+  <!-- Acción para abrir el formulario de vendedores -->
+  <act_window id="action_vendedor_agente_task"
+              name="VendedorAgenteAction"
+          	  res_model="vendedor_agente_espacio.publicidad"
+          	  view_mode="tree,form" />
+
+  <!-- Menú vertical de centro de vendedores -->
+  <menuitem id="vendedor_agente_menu"
+			      name="AgentesVendedores"
+			      parent="modulo_continuidad_publicitaria_menu"
+			      action="action_vendedor_agente_task"/>
+
+  <!-- Acción para abrir el formulario de categorias/tipo -->
+  <act_window id="action_tipo_task"
+              name="TipoAction"
+              res_model="tipo_espacio.publicidad"
+              view_mode="tree,form" />
+
+  <!-- Menú vertical de centro de categorias/tipo -->
+  <menuitem id="tipo_menu"
+            name="Tipo"
+            parent="modulo_continuidad_publicitaria_menu"
+            action="action_tipo_task"/>
+
+  <!-- Acción para abrir el formulario de mercado -->
+  <act_window id="action_mercado_task"
+              name="MercadoAction"
+              res_model="mercado_espacio.publicidad"
+              view_mode="tree,form" />
+
+  <!-- Menú vertical de centro de mercado -->
+  <menuitem id="mercado_menu"
+            name="Mercado"
+            parent="modulo_continuidad_publicitaria_menu"
+            action="action_mercado_task"/>
+
+  <!-- Acción para abrir el formulario de retener -->
+  <act_window id="action_retener_task"
+              name="RetenerAction"
+              res_model="retener_espacio.publicidad"
+              view_mode="tree,form" />
+
+  <!-- Menú vertical de centro de retener -->
+  <menuitem id="retener_menu"
+            name="Retener"
+            parent="modulo_continuidad_publicitaria_menu"
+            action="action_retener_task"/>
+
+  <!-- Acción para abrir el formulario de retener -->
+  <act_window id="action_contrato_task"
+              name="ContratoAction"
+              res_model="contrato_espacio.publicidad"
+              view_mode="tree,form" />
+
+  <!-- Menú vertical de centro de retener -->
+  <menuitem id="contrato_menu"
+            name="Contrato"
+            parent="modulo_continuidad_publicitaria_menu"
+            action="action_contrato_task"/>
+
+  <!-- Menú superior para el registro de espacios publicitarios -->
+
+  <menuitem id="modulo_productos_continuidad_publicitaria"
+            name="Formulario de Productos Publicitarios"/>
+
+  <!-- Acción para abrir el formulario de espacios publicitarios -->
+  <act_window id="action_admin_task"
+			        name="Orden de Inserción"
+			        res_model="espacio.publicitario"
+			        view_mode="tree,form" />
+
+  <menuitem id="modulo_productos_continuidad_publicitaria_menu"
+            name="Formulario de Productos Publicitarios"
+  				  parent="modulo_productos_continuidad_publicitaria"
+            action="action_admin_task" />
+  </data>
+</openerp>
