@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-
+# -*- coding: UTF-8 -*-
 from openerp import models, fields
 import openerp
 from openerp import api
@@ -12,11 +11,32 @@ from openerp.tools.translate import _
 
 class SpecificProduct(models.Model):
     _name = 'specific.product'
-    _inherit = 'product.product'
+    #_inherit = 'product.product'
+
+    # edicion = fields.many2one('edicion.publicidad', string='Edicion')
+    # estilo = fields.many2one('estilo.publicidad', string='Estilo')
+    # seccion = fields.many2one('seccion.publicidad', string='Seccion')
+    # subseccion = fields.many2one('subseccion.publicidad', string='Subseccion')
+    # pagina = fields.many2one('pagina.publicidad', string='Pagina')
+    # tarifa = fields.many2one('tarifa.publicidad', string='Tarifa')
+    # color = fields.many2one('color.publicidad', string='Color')
+    # status = fields.many2one('status.publicidad', string='Status')
+    # dias = fields.integer(string="Días", size=10)
+    # ancho = fields.integer(string="Ancho", size=10)
+    # alto = fields.integer(string="Alto", size=10)
+    # orden_insercion = fields.integer(string="Orden de Inserción", size=20)
+    # arte_final = fields.boolean('Arte Final')
+    # centro_costos = fields.many2one('centro', string='Centro de Costos:')
+    # vendedor_agente = fields.many2one('vendedor_agente.publicidad', string='Vendedor/Agente')
+    # tipo = fields.many2one('tipo.publicidad', string='Tipo')
+    # mercado = fields.many2one('mercado.publicidad', string='Mercado')
+    # retener = fields.many2one('retener.publicidad', string='Retener')
+    # contrato = fields.many2one('contrato.publicidad', string='Contrato2')
+    # hola = fields.text(string='hola')
     _columns = {
 
 
-
+		'name': fields.char(string='Nombre'),
         'edicion': fields.many2one('edicion.publicidad', string='Edicion'),
         'estilo': fields.many2one('estilo.publicidad', string='Estilo'),
         'seccion': fields.many2one('seccion.publicidad', string='Seccion'),
@@ -32,13 +52,18 @@ class SpecificProduct(models.Model):
         'orden_insercion': fields.integer(string="Orden de Inserción", size=20),
         'arte_final': fields.boolean('Arte Final'),
 
-        'centro_costos': fields.many2one('centro', string='Centro de Costos:'),
+        'centro_costos': fields.many2one('centro_costos.publicidad', string='Centro de Costos:'),
         'vendedor_agente': fields.many2one('vendedor_agente.publicidad', string='Vendedor/Agente'),
         'tipo': fields.many2one('tipo.publicidad', string='Tipo'),
         'mercado': fields.many2one('mercado.publicidad', string='Mercado'),
         'retener': fields.many2one('retener.publicidad', string='Retener'),
-        'contrato': fields.many2one('contrato.publicidad', string='Contrato'),
+        'contrato': fields.many2one('contrato.publicidad', string='Contrato2'),
+
     }
+    
+
+
+
 
     class Edicion(models.Model):
         _name = "edicion.publicidad"

@@ -40,9 +40,13 @@
 									<field name="mercado"/>
 									<field name="retener"/>
 									<field name="contrato"/>
+									<field name="name" />
+
 								</group>
 
 							</group>
+
+
 						</page>
 					</notebook>
 				</sheet>
@@ -207,106 +211,106 @@
 
 
 		<!-- Upper menu -->
-		<menuitem id="modulo_continuidad_publicitaria" name="Administrador Continuidad publicitaria"/>
+		<!--<menuitem id="modulo_continuidad_publicitaria" name="Administrador Continuidad publicitaria"/>
 		<menuitem id="modulo_continuidad_publicitaria_menu" name="Administrador Continuidad Publicitaria" parent="modulo_continuidad_publicitaria" />
 
-
+-->
 
 		<!-- Submenu para edicion -->
-		<menuitem id="edicion_menu"
+	<!--	<menuitem id="edicion_menu"
 			name="Edicion"
 			parent="modulo_continuidad_publicitaria_menu"
 			action="continuidad_publicitaria_edicion_action"/>
-
+-->
 		<!-- Submenu para estilo -->
-		<menuitem id="estilo_menu"
+<!--		<menuitem id="estilo_menu"
 			name="Estilo"
 			parent="modulo_continuidad_publicitaria_menu"
 			action="continuidad_publicitaria_estilo_action"/>
-
+-->
 		<!-- Submenu para seccion -->
-		<menuitem id="seccion_menu"
+		<!-- <menuitem id="seccion_menu"
 			name="Seccion"
 			parent="modulo_continuidad_publicitaria_menu"
-			action="continuidad_publicitaria_seccion_action"/>
+			action="continuidad_publicitaria_seccion_action"/> -->
 
 		<!-- Submenu para subseccion -->
-		<menuitem id="subseccion_menu"
+		<!-- <menuitem id="subseccion_menu"
 			name="SubSección"
 			parent="modulo_continuidad_publicitaria_menu"
-			action="continuidad_publicitaria_subseccion_action"/>
+			action="continuidad_publicitaria_subseccion_action"/> -->
 
 		<!-- Submenu para pagina -->
-		<menuitem id="pagina_menu"
+		<!-- <menuitem id="pagina_menu"
 			name="Pagina"
 			parent="modulo_continuidad_publicitaria_menu"
-			action="continuidad_publicitaria_pagina_action"/>
+			action="continuidad_publicitaria_pagina_action"/> -->
 
 		<!-- Submenu para tarifa -->
-		<menuitem id="tarifa_menu"
+		<!-- <menuitem id="tarifa_menu"
 			name="Tarifa"
 			parent="modulo_continuidad_publicitaria_menu"
-			action="continuidad_publicitaria_tarifa_action"/>
+			action="continuidad_publicitaria_tarifa_action"/> -->
 
 		<!-- Submenu para color -->
-		<menuitem id="color_menu"
+		<!-- <menuitem id="color_menu"
 			name="Color"
 			parent="modulo_continuidad_publicitaria_menu"
-			action="continuidad_publicitaria_color_action"/>
+			action="continuidad_publicitaria_color_action"/> -->
 
 		<!-- Submenu para status -->
-		<menuitem id="status_menu"
+		<!-- <menuitem id="status_menu"
 			name="Status"
 			parent="modulo_continuidad_publicitaria_menu"
-			action="continuidad_publicitaria_status_action"/>
+			action="continuidad_publicitaria_status_action"/> -->
 
 		<!-- Submenu para centro de costos -->
-		<menuitem id="centro_costos_menu"
+		<!-- <menuitem id="centro_costos_menu"
 			name="Centro de Costos"
 			parent="modulo_continuidad_publicitaria_menu"
-			action="continuidad_publicitaria_centrocostos_action"/>
+			action="continuidad_publicitaria_centrocostos_action"/> -->
 
 		<!-- Submenu para vendedor -->
-		<menuitem id="vendedor_agente_menu"
+		<!-- <menuitem id="vendedor_agente_menu"
 			name="Vendedor Agente"
 			parent="modulo_continuidad_publicitaria_menu"
-			action="continuidad_publicitaria_vendedor_agente_action"/>
+			action="continuidad_publicitaria_vendedor_agente_action"/> -->
 
 		<!-- Submenu para tipo -->
-		<menuitem id="tipo_menu"
+		<!-- <menuitem id="tipo_menu"
 			name="Tipo"
 			parent="modulo_continuidad_publicitaria_menu"
-			action="continuidad_publicitaria_tipo_action"/>
+			action="continuidad_publicitaria_tipo_action"/> -->
 
 		<!-- Submenu para mercado -->
-		<menuitem id="mercado_menu"
+		<!-- <menuitem id="mercado_menu"
 			name="Mercado"
 			parent="modulo_continuidad_publicitaria_menu"
-			action="continuidad_publicitaria_mercado_action"/>
+			action="continuidad_publicitaria_mercado_action"/> -->
 
 		<!-- Submenu para retener -->
-		<menuitem id="retener_menu"
+		<!-- <menuitem id="retener_menu"
 			name="Retener"
 			parent="modulo_continuidad_publicitaria_menu"
-			action="continuidad_publicitaria_retener_action"/>
+			action="continuidad_publicitaria_retener_action"/> -->
 
 		<!-- Submenu para contrato -->
-		<menuitem id="contrato_menu"
+		<!-- <menuitem id="contrato_menu"
 			name="Contrato"
 			parent="modulo_continuidad_publicitaria_menu"
-			action="continuidad_publicitaria_contrato_action"/>
+			action="continuidad_publicitaria_contrato_action"/> -->
 
 
-			<menuitem id="modulo_productos_continuidad_publicitaria" name="Formulario de Productos Publicitarios"/>
+			<!--<menuitem id="modulo_productos_continuidad_publicitaria" name="Formulario de Productos Publicitarios"/>-->
 
 			<!-- Accion para abrir el formulario para registros de productos publicitarios -->
-			<act_window id="action_admin_task"
+			<!-- <act_window id="action_admin_task"
 			name="Orden de Inserción"
 			res_model="specific.product"
-			view_mode="tree,form" />
+			view_mode="tree,form" /> -->
 
-			<menuitem id="modulo_productos_continuidad_publicitaria_menu" name="Formulario de Productos Publicitarios"
-				parent="modulo_productos_continuidad_publicitaria" action="action_admin_task" />
+		<!--	<menuitem id="modulo_productos_continuidad_publicitaria_menu" name="Formulario de Productos Publicitarios"
+				parent="modulo_productos_continuidad_publicitaria" action="action_admin_task" />-->
 
 
 
